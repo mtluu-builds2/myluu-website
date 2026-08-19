@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Luu — Organizational Psychologist &amp; Builder</title>
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch (e) {}
+  })();
+</script>
+<meta name="description" content="My Luu is an organizational psychologist and 2x founder building human-first, AI-native organizations. See her work at PwC, LifeSpark Labs, and AI Collective.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="profile">
+<meta property="og:title" content="My Luu — Organizational Psychologist &amp; Builder">
+<meta property="og:description" content="Organizational psychologist and 2x founder building human-first, AI-native organizations. Head of Culture at The AI Collective.">
+<meta property="og:image" content="assets/og-image.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="My Luu — Organizational Psychologist &amp; Builder">
+<meta name="twitter:description" content="Organizational psychologist and 2x founder building human-first, AI-native organizations. Head of Culture at The AI Collective.">
+<meta name="twitter:image" content="assets/og-image.jpg">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "My Luu",
+  "jobTitle": "Organizational Psychologist",
+  "description": "Organizational psychologist and 2x founder building human-first, AI-native organizations.",
+  "image": "assets/og-image.jpg",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "The AI Collective"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Golden Gate University" },
+    { "@type": "CollegeOrUniversity", "name": "The University of Texas at Austin" }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/mytluu/"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #171d33;
+    --ink: #f6f7fb;
+    --muted: #aab0cc;
+    --line: rgba(255,255,255,0.15);
+    --surface: #202849;
+    --accent: #6a87ff;
+    --accent-2: #8fdcff;
+    --gradient: linear-gradient(135deg, #2c3f9e 0%, #4f6dff 50%, #8fdcff 100%);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --header-bg: rgba(23, 29, 51, 0.85);
+    --btn-border: rgba(255,255,255,0.3);
+    --shadow-color: rgba(0,0,0,0.35);
+    --ambient-glow: rgba(63,91,255,0.28);
+    --body-copy: #d7d9e4;
+  }
+  [data-theme="light"] {
+    --bg: #f7f8fc;
+    --ink: #161b2f;
+    --muted: #5b6280;
+    --line: rgba(22,27,47,0.12);
+    --surface: #ffffff;
+    --accent: #3552e0;
+    --accent-2: #1f6fb8;
+    --gradient: linear-gradient(135deg, #2c3f9e 0%, #4f6dff 50%, #1f9fd6 100%);
+    --header-bg: rgba(247, 248, 252, 0.85);
+    --btn-border: rgba(22,27,47,0.25);
+    --shadow-color: rgba(22,27,47,0.18);
+    --ambient-glow: rgba(63,91,255,0.14);
+    --body-copy: #2b3150;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    font-size: 17px;
+    position: relative;
+    padding-top: 3px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  /* Scroll progress bar */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--gradient);
+    z-index: 1001;
+  }
+  /* subtle grain so flat dark fields don't feel like a flat template */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* ambient gradient glow, fixed so it reads as atmosphere behind the whole page */
+  body::after {
+    content: "";
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 900px;
+    max-height: 900px;
+    background: radial-gradient(circle, var(--ambient-glow) 0%, rgba(63,91,255,0) 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 3px;
+    background: var(--header-bg);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: var(--serif); font-size: 30px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); }
+  nav { display: flex; align-items: center; }
+  nav a {
+    margin-left: 26px;
+    font-size: 13px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  nav a:hover { color: var(--accent-2); text-decoration: none; }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .theme-toggle:hover { border-color: var(--accent-2); transform: translateY(-2px); }
+  .theme-toggle svg { width: 16px; height: 16px; display: block; }
+  .theme-toggle .icon-moon { display: none; }
+  [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+  .eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-2);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 80px 0 96px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height: 1.04;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 26px;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero p.sub {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 460px;
+    margin-bottom: 34px;
+  }
+  .cta-row a {
+    display: inline-block;
+    margin-right: 12px;
+    padding: 13px 26px;
+    border: 1px solid var(--btn-border);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .cta-row a.primary {
+    background: var(--gradient);
+    color: #fff;
+    border-color: transparent;
+  }
+  .cta-row a:hover { text-decoration: none; opacity: 0.82; }
+
+  .hero-image-wrap { position: relative; }
+  .hero-image-wrap::before {
+    content: "";
+    position: absolute;
+    top: 22px;
+    left: -22px;
+    right: -22px;
+    bottom: -22px;
+    background: var(--gradient);
+    border-radius: 26px;
+    z-index: 0;
+  }
+  .hero-image-wrap .frame { position: relative; z-index: 1; overflow: hidden; border-radius: 22px; }
+  .hero-image-wrap img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 46% top;
+  }
+
+  /* ---------- Sections ---------- */
+  section { padding: 88px 0; border-top: 1px solid var(--line); position: relative; }
+  section h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  section p { max-width: 620px; margin-bottom: 16px; color: var(--muted); }
+  section p strong { color: var(--ink); }
+
+  /* My story */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .story-grid .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: 22px; }
+  .story-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1) brightness(0.92);
+  }
+  .story-grid .frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, rgba(40,60,210,0.45) 0%, rgba(15,20,40,0.05) 55%, rgba(110,210,255,0.3) 100%);
+    mix-blend-mode: color;
+  }
+  .story-text p { color: var(--body-copy); font-size: 18px; max-width: 560px; }
+  .story-text p.lede {
+    font-family: var(--serif);
+    font-size: 27px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  /* Projects */
+  .project-carousel { position: relative; }
+  .project-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .project-track::-webkit-scrollbar { display: none; }
+  .project-card {
+    display: block;
+    flex: 0 0 clamp(250px, 30vw, 340px);
+    scroll-snap-align: start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 34px 32px;
+    position: relative;
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  a.project-card:hover {
+    text-decoration: none;
+    transform: translateY(-7px);
+    box-shadow: 0 20px 36px var(--shadow-color);
+    border-color: var(--accent-2);
+  }
+  .project-card h3 {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .project-card .org {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-2);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .project-card p { font-size: 15px; color: var(--muted); margin-bottom: 0; }
+  .carousel-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .carousel-btn:hover { border-color: var(--accent-2); transform: translateY(-50%) translateY(-2px); }
+  .carousel-btn.prev { left: -6px; }
+  .carousel-btn.next { right: -6px; }
+  .carousel-dots { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+  .carousel-dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--line);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .carousel-dots button.active { background: var(--accent-2); transform: scale(1.3); }
+  @media (max-width: 900px) {
+    .carousel-btn { display: none; }
+  }
+
+  /* Recognition */
+  .recognition-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .recognition-grid .frame { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border-radius: 22px; }
+  .recognition-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.1) brightness(0.92);
+  }
+  .recognition-grid .frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, rgba(40,60,210,0.4) 0%, rgba(15,20,40,0.05) 55%, rgba(110,210,255,0.28) 100%);
+    mix-blend-mode: color;
+  }
+  .stat-row { display: flex; gap: 44px; margin: 28px 0 30px; flex-wrap: wrap; }
+  .stat .num {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .stat .label { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 140px; }
+
+  /* Education, compact */
+  #education p { font-size: 15px; }
+
+  /* Newsletter band: the one place the gradient goes full strength */
+  #newsletter {
+    background: var(--gradient);
+    color: #fff;
+    border-top: none;
+  }
+  #newsletter .eyebrow { color: rgba(255,255,255,0.85); }
+  #newsletter h2 { color: #ffffff; }
+  #newsletter p { color: rgba(255,255,255,0.85); max-width: 620px; }
+  #newsletter p strong { color: #ffffff; }
+  #newsletter .cta-row a { border-color: rgba(255,255,255,0.6); color: #fff; }
+  #newsletter .cta-row a.primary { background: #ffffff; color: #1c2b7a; border-color: #ffffff; }
+
+  /* How I work */
+  .work-intro {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.4;
+    max-width: 700px;
+    color: var(--ink);
+    margin-bottom: 44px;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+    counter-reset: val;
+  }
+  .value-item { border-left: 2px solid transparent; border-image: var(--gradient) 1; padding-left: 18px; position: relative; }
+  .value-item::before {
+    counter-increment: val;
+    content: counter(val, decimal-leading-zero);
+    display: block;
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--accent-2);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .value-item h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+  .value-item p { font-size: 15px; color: var(--muted); margin-bottom: 0; }
+
+  /* Bookshelf */
+  .shelf-group { margin-bottom: 48px; }
+  .shelf-group:last-child { margin-bottom: 0; }
+  .shelf-label {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .book-carousel { position: relative; }
+  .book-track {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 4px 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .book-track::-webkit-scrollbar { display: none; }
+  .book-card {
+    display: block;
+    flex: 0 0 140px;
+    scroll-snap-align: start;
+    color: inherit;
+  }
+  .book-card:hover { text-decoration: none; }
+  .book-card .cover-frame {
+    aspect-ratio: 2 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .book-card:hover .cover-frame {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+  }
+  .book-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .book-card .book-title {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-top: 10px;
+  }
+  .book-card .book-author {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+  .book-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 24px;
+  }
+
+  /* Contact */
+  #contact h2 { max-width: 640px; }
+  .note {
+    font-size: 13px;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-top: 20px;
+    max-width: 560px;
+  }
+
+  footer {
+    padding: 36px 0 56px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+  }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 760px) {
+    .hero-grid, .story-grid, .recognition-grid { grid-template-columns: 1fr; }
+    .story-grid { gap: 32px; }
+    .hero-image-wrap { order: -1; }
+    .values-grid { grid-template-columns: 1fr; }
+    nav a { margin-left: 16px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress-bar"></div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">My Luu</div>
+    <nav>
+      <a href="#story">My Story</a>
+      <a href="#projects">Projects</a>
+      <a href="#newsletter">Ideas &amp; Writing</a>
+      <a href="#how-i-work">How I Work</a>
+      <a href="#books">Bookshelf</a>
+      <a href="#contact">Work With Me</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light/dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Organizational Psychologist · 2x Founder</div>
+      <h1>I build <em>human-first</em>, AI-native organizations.</h1>
+      <p class="sub">Hi there! I'm My. Nearly 20 years turning people problems into infrastructure that actually holds. Currently Head of Culture on the global leadership team at The AI Collective.</p>
+      <div class="cta-row">
+        <a href="#contact" class="primary">Get in touch</a>
+        <a href="https://www.linkedin.com/in/mytluu/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="frame">
+        <img src="assets/hero-aic-stage.jpg" alt="My Luu speaking on stage in front of a screen reading Who Will Decide the Future of Work, The AI Collective">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap story-grid">
+    <div class="frame">
+      <img src="assets/my-story-portrait.jpg" alt="My Luu laughing, studio portrait">
+    </div>
+    <div class="story-text">
+      <div class="eyebrow">My Story</div>
+      <p class="lede">I've spent almost 20 years figuring out how people actually thrive inside organizations.</p>
+      <p>I started as a CPA, burned out on spreadsheets, and went back to school for organizational psychology because I cared more about the humans than the ledger. Since then I keep landing in the same pattern: find something new, teach myself fast, teach other people, build the infrastructure that didn't exist yet, then hand it off and go find the next thing.</p>
+      <p>I've done that inside a Big 4 firm, a cancer-care startup, my own company, and now inside the largest AI community in the world. Different industries, same throughline: making sure the humans in the system don't get left behind by how fast it's moving.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Projects</div>
+    <h2>Things I've built</h2>
+  </div>
+  <div class="wrap">
+    <div class="project-carousel">
+      <button class="carousel-btn prev" id="proj-prev" aria-label="Previous project">&#8249;</button>
+      <button class="carousel-btn next" id="proj-next" aria-label="Next project">&#8250;</button>
+      <div class="project-track" id="project-track">
+      <a class="project-card" href="https://www.aicollective.com/" target="_blank" rel="noopener noreferrer">
+        <div class="org">The AI Collective &middot; 2025&ndash;present</div>
+        <h3>Rebuilding onboarding for 250,000+ members</h3>
+        <p>I own culture for the largest AI community in the world, part-time, all volunteer. Rebuilt onboarding using AI so new members go from sign-up to actually contributing in hours instead of weeks, across 250+ chapters in 50+ countries.</p>
+      </a>
+      <a class="project-card" href="https://www.linkedin.com/company/lifespark-labs" target="_blank" rel="noopener noreferrer">
+        <div class="org">LifeSpark Labs &middot; 2023&ndash;2026</div>
+        <h3>An AI career coach disguised as a game</h3>
+        <p>Co-founded and led this from a 15-minute prototype I taught myself to code, to a platform that reached roughly 4,000 young adults closing the gap between school and their first job. Wound it down the right way in 2026: stockholders informed, partners taken care of, reputation intact.</p>
+      </a>
+      <a class="project-card" href="https://claude.ai/public/artifacts/e52558fb-3274-4c54-9a78-3771afe1ae46" target="_blank" rel="noopener noreferrer">
+        <div class="org">Rolo &middot; Personal project</div>
+        <h3>A personal CRM built on Dunbar's number</h3>
+        <p>Built my own relationship-tracking tool around Dunbar's number, the idea that a person can maintain a maximum of about 150 real relationships, with 5 as your core people. Rolo (my personal Rolodex) helps me stay in touch with everyone.</p>
+      </a>
+      <div class="project-card">
+        <div class="org">Blue Note Therapeutics &middot; 2021&ndash;2023</div>
+        <h3>Building the people function from zero</h3>
+        <p>Head of HR at a venture-backed cancer-care startup. Built the whole employee experience from scratch, and got the company through a reduction in force and hard conversations without losing people's trust.</p>
+      </div>
+      <a class="project-card" href="https://www.credly.com/organizations/pwc/badges" target="_blank" rel="noopener noreferrer">
+        <div class="org">PwC Network Badge Programme &middot; 2017&ndash;2021</div>
+        <h3>A hunch that became an 18-person team and $16.4M</h3>
+        <p>Pitched digital credentialing before anyone else at PwC believed in it. Built the team, built the program, issued 139,000+ badges across 48 countries, 40M+ views.</p>
+      </a>
+      <a class="project-card" href="https://www.coursera.org/specializations/pwc-analytics/" target="_blank" rel="noopener noreferrer">
+        <div class="org">PwC &times; Coursera &middot; 2016&ndash;2017</div>
+        <h3>PwC's first-ever corporate MOOC</h3>
+        <p>2.4M visitors, 370,000+ enrollments, 81+ hires, and a Forbes feature, back when "corporate specialization on Coursera" wasn't a sentence anyone said out loud yet.</p>
+      </a>
+      <div class="project-card">
+        <div class="org">PwC &middot; 2009&ndash;2021, earlier years</div>
+        <h3>Where I actually learned the craft</h3>
+        <p>Twelve years progressing from Assurance into Learning &amp; Development and global people strategy. Designed onboarding that improved junior staff retention by 20%, and eventually PwC's first global people value proposition framework.</p>
+      </div>
+      </div>
+      <div class="carousel-dots" id="project-dots"></div>
+    </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="wrap recognition-grid">
+    <div>
+      <div class="eyebrow">Recognition &amp; Speaking</div>
+      <h2>Proof it's not just talk</h2>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num">16M+</div>
+          <div class="label">people reached through programs I've built</div>
+        </div>
+        <div class="stat">
+          <div class="num">500+</div>
+          <div class="label">people coached 1:1 across my career</div>
+        </div>
+        <div class="stat">
+          <div class="num">100%</div>
+          <div class="label">placement rate for people I've personally referred</div>
+        </div>
+      </div>
+      <p>UBS &amp; Luminary Fellow (2024) &middot; Finalist, 100 Women to Know Award (2026) &middot; Female Founder in Focus, featured in an SF MOMA exhibition.</p>
+      <p>Recent talks: SF Tech Week &mdash; Who Will Decide the Future of Work? (2025); Gatherverse Tech for Humanity Summit (2025); SheLeadsAI podcast (2025); University of San Francisco (2026); Stanford Pitch Competition. Work featured in Forbes, Coursera, and PwC publications.</p>
+    </div>
+    <div class="frame">
+      <img src="assets/recognition-panel.jpg" alt="My Luu speaking on a panel discussion in front of a live audience">
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">Education</div>
+    <p>M.A., Industrial/Organizational Psychology &mdash; Golden Gate University<br>
+    B.B.A. &amp; Master in Professional Accounting &mdash; The University of Texas at Austin<br>
+    Certified Public Accountant (CPA), inactive &mdash; Texas and California</p>
+  </div>
+</section>
+
+<section id="newsletter">
+  <div class="wrap">
+    <div class="eyebrow">Ideas &amp; Writing</div>
+    <h2>Ideas and Writing</h2>
+    <p>I write about AI adoption, trust, and organizational change, for people who feel overwhelmed by AI at work, and for leaders trying to earn their team's trust rather than just their compliance.</p>
+    <div class="cta-row">
+      <a href="https://mytluu.substack.com/" target="_blank" rel="noopener noreferrer" class="primary">Read on Substack</a>
+    </div>
+  </div>
+</section>
+
+<section id="how-i-work">
+  <div class="wrap">
+    <div class="eyebrow">How I Work</div>
+    <h2>My personality, in practice</h2>
+    <p class="work-intro">I lead with directness, not politics. I'd rather tell you the hard thing clearly than let it fester. I'm allergic to jargon and to work that exists just to look like work. I believe rest is part of performance, not the opposite of it, and that the best decisions get made when people feel safe enough to disagree out loud.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <h3>Be better</h3>
+        <p>Leave things better than I found them. Sustainable performance, not burnout.</p>
+      </div>
+      <div class="value-item">
+        <h3>Be authentic</h3>
+        <p>Listen to what actually feels right, and take ownership of the call.</p>
+      </div>
+      <div class="value-item">
+        <h3>Be clear</h3>
+        <p>Say the thing directly, in a way the other person can actually receive.</p>
+      </div>
+      <div class="value-item">
+        <h3>Be a learner</h3>
+        <p>No one has all the answers. Progress over perfection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="books">
+  <div class="wrap">
+    <div class="eyebrow">Bookshelf</div>
+    <h2>What I'm reading</h2>
+    <p>Covers link out to Bookshop.org, which gives most of its profit margin back to independent bookstores.</p>
+
+    <div class="shelf-group">
+      <div class="shelf-label">Currently reading</div>
+      <div class="book-carousel">
+        <button class="carousel-btn prev" id="current-prev" aria-label="Previous book">&#8249;</button>
+        <button class="carousel-btn next" id="current-next" aria-label="Next book">&#8250;</button>
+        <div class="book-track" id="current-track">
+        <a class="book-card" href="https://bookshop.org/p/books/incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great-eric-ries/59b9dafd417d9e02" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798893311860.jpg?v=65b6a41ab6f9840e537c32c5f5bb1cac&width=600" alt="Incorruptible book cover"></div>
+          <div class="book-title">Incorruptible</div><div class="book-author">Eric Ries</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/likeable-badass-how-women-get-the-success-they-deserve-alison-fragale/c3d6111017a7b410" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780593468982.jpg?v=396605b374666a0b713863d734e47f7f&width=600" alt="Likeable Badass book cover"></div>
+          <div class="book-title">Likeable Badass</div><div class="book-author">Alison Fragale</div>
+        </a>
+        </div>
+        <div class="carousel-dots" id="current-dots"></div>
+      </div>
+    </div>
+
+    <div class="shelf-group">
+      <div class="shelf-label">Previously read &middot; Non-fiction</div>
+      <div class="book-carousel">
+        <button class="carousel-btn prev" id="nonfiction-prev" aria-label="Previous book">&#8249;</button>
+        <button class="carousel-btn next" id="nonfiction-next" aria-label="Next book">&#8250;</button>
+        <div class="book-track" id="nonfiction-track">
+        <a class="book-card" href="https://bookshop.org/p/books/becoming-michelle-obama/adb5851164644606" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781524763145.jpg?v=e2dd855e464c9bab94fa218d285b092e&width=600" alt="Becoming book cover"></div>
+          <div class="book-title">Becoming</div><div class="book-author">Michelle Obama</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/build-the-damn-thing-how-to-start-a-successful-business-if-you-re-not-a-rich-white-guy-kathryn-finney/da4c5310177f7e7d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798217182442.jpg?v=06f19019adff646ecb965c1e5973d2ee&width=600" alt="Build the Damn Thing book cover"></div>
+          <div class="book-title">Build the Damn Thing</div><div class="book-author">Kathryn Finney</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/daring-greatly-how-the-courage-to-be-vulnerable-transforms-the-way-we-live-love-parent-and-lead-bren-brown/d53269667b2081fd" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781592408412.jpg?v=a376dca43c9e531c37aa611ef267a650&width=600" alt="Daring Greatly book cover"></div>
+          <div class="book-title">Daring Greatly</div><div class="book-author">Bren&eacute; Brown</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/dear-girls-intimate-tales-untold-secrets-advice-for-living-your-best-life-ali-wong/6c182b64e707671d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525508854.jpg?v=enc-v1&width=600" alt="Dear Girls book cover"></div>
+          <div class="book-title">Dear Girls</div><div class="book-author">Ali Wong</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/grit-the-power-of-passion-and-perseverance-angela-duckworth/be645fb13a2c0bfc" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781501111112.jpg?v=d2a7f3821eb70bb43f550c0a7b795b98&width=600" alt="Grit book cover"></div>
+          <div class="book-title">Grit</div><div class="book-author">Angela Duckworth</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/how-to-be-an-antiracist-ibram-x-kendi/521ef65d5c2268ca" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525509301.jpg?v=ca397184f565fa68b6c0629e65394659&width=600" alt="How to Be an Antiracist book cover"></div>
+          <div class="book-title">How to Be an Antiracist</div><div class="book-author">Ibram X. Kendi</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-magnolia-story-chip-gaines/799b80f140e237fb" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780718079185.jpg?v=enc-v1&width=600" alt="The Magnolia Story book cover"></div>
+          <div class="book-title">The Magnolia Story</div><div class="book-author">Chip &amp; Joanna Gaines</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-obstacle-is-the-way-the-timeless-art-of-turning-trials-into-triumph-ryan-holiday/a0d876bc2426fb75" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780593719916.jpg?v=221f933a8e9b12625cc124e9eaa32fd5&width=600" alt="The Obstacle Is the Way book cover"></div>
+          <div class="book-title">The Obstacle Is the Way</div><div class="book-author">Ryan Holiday</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/outliers-the-story-of-success-malcolm-gladwell/1cd3644f256d7d2e" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780316017930.jpg?v=c54cb023406ea1e8dce56beba3c5d201&width=600" alt="Outliers book cover"></div>
+          <div class="book-title">Outliers</div><div class="book-author">Malcolm Gladwell</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/over-the-top-a-raw-journey-to-self-love-jonathan-van-ness/ec9a10744ce4af4d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780062906380.jpg?v=d824ab5e793fa1092684946f75359486&width=600" alt="Over the Top book cover"></div>
+          <div class="book-title">Over the Top</div><div class="book-author">Jonathan Van Ness</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/radical-friendship-seven-ways-to-love-yourself-and-find-your-people-in-an-unjust-world-kate-johnson/1fd460fe55e72041" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781611808117.jpg?v=enc-v1&width=600" alt="Radical Friendship book cover"></div>
+          <div class="book-title">Radical Friendship</div><div class="book-author">Kate Johnson</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/tuesdays-with-morrie-an-old-man-a-young-man-and-life-s-greatest-lesson-mitch-albom/1239beb0e6df1116" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780385484510.jpg?v=enc-v1&width=600" alt="Tuesdays with Morrie book cover"></div>
+          <div class="book-title">Tuesdays with Morrie</div><div class="book-author">Mitch Albom</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/untamed-reese-s-book-club-glennon-doyle/55eaa08b7cf1dff0" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781984801258.jpg?v=fc9810c0975506b90e9d4f1dac5a8f9f&width=600" alt="Untamed book cover"></div>
+          <div class="book-title">Untamed</div><div class="book-author">Glennon Doyle</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/white-fragility-why-it-s-so-hard-for-white-people-to-talk-about-racism-dr-robin-diangelo/9bb312f941d2a646" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780807047415.jpg?v=e4a8271e853a74ee3cc6609919014dbe&width=600" alt="White Fragility book cover"></div>
+          <div class="book-title">White Fragility</div><div class="book-author">Robin DiAngelo</div>
+        </a>
+        </div>
+        <div class="carousel-dots" id="nonfiction-dots"></div>
+      </div>
+    </div>
+
+    <div class="shelf-group">
+      <div class="shelf-label">Previously read &middot; Fiction</div>
+      <div class="book-carousel">
+        <button class="carousel-btn prev" id="fiction-prev" aria-label="Previous book">&#8249;</button>
+        <button class="carousel-btn next" id="fiction-next" aria-label="Next book">&#8250;</button>
+        <div class="book-track" id="fiction-track">
+        <a class="book-card" href="https://bookshop.org/p/books/the-bride-test-helen-hoang/ed3cbf8b35752b5c" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780451490827.jpg?v=f39dbc1d9a812efc9be8091afa3be54c&width=600" alt="The Bride Test book cover"></div>
+          <div class="book-title">The Bride Test</div><div class="book-author">Helen Hoang</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/everything-i-never-told-you-celeste-ng/c20294ef63ab6145" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780143127550.jpg?v=79921b524467c351d39cd6a366d71a49&width=600" alt="Everything I Never Told You book cover"></div>
+          <div class="book-title">Everything I Never Told You</div><div class="book-author">Celeste Ng</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-five-people-you-meet-in-heaven-mitch-albom/5bb260df84a3a268" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781401308582.jpg?v=5a62f0216460159527b30a1a6356de9c&width=600" alt="The Five People You Meet in Heaven book cover"></div>
+          <div class="book-title">The Five People You Meet in Heaven</div><div class="book-author">Mitch Albom</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/people-we-meet-on-vacation-emily-henry/0c254838c8093ee3" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781984806758.jpg?v=c1c8b9397b13dbda11c8732361b4de84&width=600" alt="People We Meet on Vacation book cover"></div>
+          <div class="book-title">People We Meet on Vacation</div><div class="book-author">Emily Henry</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-vanishing-half-a-gma-book-club-pick-a-novel-brit-bennett/216921d46a917406" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525536963.jpg?v=5079fc0e1449270543bf37e871acea12&width=600" alt="The Vanishing Half book cover"></div>
+          <div class="book-title">The Vanishing Half</div><div class="book-author">Brit Bennett</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/where-the-crawdads-sing-reese-s-book-club-delia-owens/6d44dfb09fc8952c" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780735219106.jpg?v=daf4ebdf15f4304c125e58f72aaad7be&width=600" alt="Where the Crawdads Sing book cover"></div>
+          <div class="book-title">Where the Crawdads Sing</div><div class="book-author">Delia Owens</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/you-ve-reached-sam-dustin-thao/12b7a011649e8bec" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781250762054.jpg?v=9a8161db1d9277cf8ab86100a4e46b90&width=600" alt="You've Reached Sam book cover"></div>
+          <div class="book-title">You&rsquo;ve Reached Sam</div><div class="book-author">Dustin Thao</div>
+        </a>
+        </div>
+        <div class="carousel-dots" id="fiction-dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Work With Me</div>
+    <h2>Let's talk.</h2>
+    <p>Open to conversations about fractional People/culture advisory, speaking, and the newsletter.</p>
+    <p><a href="https://www.linkedin.com/in/mytluu/" target="_blank" rel="noopener">Message me on LinkedIn</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 My Luu.
+  </div>
+</footer>
+
+<script>
+  // Theme toggle
+  (function () {
+    var root = document.documentElement;
+    var toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+        try { localStorage.setItem('theme', 'dark'); } catch (e) {}
+      } else {
+        root.setAttribute('data-theme', 'light');
+        try { localStorage.setItem('theme', 'light'); } catch (e) {}
+      }
+    });
+  })();
+
+  // Scroll progress bar
+  (function () {
+    var bar = document.getElementById('progress-bar');
+    if (!bar) return;
+    function update() {
+      var doc = document.documentElement;
+      var scrollTop = doc.scrollTop || document.body.scrollTop;
+      var scrollHeight = doc.scrollHeight - doc.clientHeight;
+      var pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Generic horizontal carousel: works for the Projects track and each Bookshelf track
+  function initCarousel(trackId, prevId, nextId, dotsId, itemLabel) {
+    var track = document.getElementById(trackId);
+    var prev = document.getElementById(prevId);
+    var next = document.getElementById(nextId);
+    var dotsWrap = document.getElementById(dotsId);
+    if (!track || !dotsWrap) return;
+    var cards = Array.prototype.slice.call(track.children);
+
+    cards.forEach(function (card, i) {
+      var dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Go to ' + itemLabel + ' ' + (i + 1));
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', function () {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(dot);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function scrollByCard(dir) {
+      var cardWidth = cards[0].getBoundingClientRect().width + 18;
+      track.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+    }
+    if (prev) prev.addEventListener('click', function () { scrollByCard(-1); });
+    if (next) next.addEventListener('click', function () { scrollByCard(1); });
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        var trackRect = track.getBoundingClientRect();
+        var closestIndex = 0, closestDist = Infinity;
+        cards.forEach(function (card, i) {
+          var dist = Math.abs(card.getBoundingClientRect().left - trackRect.left);
+          if (dist < closestDist) { closestDist = dist; closestIndex = i; }
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === closestIndex); });
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  initCarousel('project-track', 'proj-prev', 'proj-next', 'project-dots', 'project');
+  initCarousel('current-track', 'current-prev', 'current-next', 'current-dots', 'book');
+  initCarousel('nonfiction-track', 'nonfiction-prev', 'nonfiction-next', 'nonfiction-dots', 'book');
+  initCarousel('fiction-track', 'fiction-prev', 'fiction-next', 'fiction-dots', 'book');
+</script>
+
+</body>
+</html>
