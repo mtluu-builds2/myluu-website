@@ -185,6 +185,48 @@
   [data-theme="light"] .theme-toggle .icon-sun { display: none; }
   [data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-left: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .menu-toggle svg { width: 16px; height: 16px; display: block; }
+  .menu-toggle .icon-close { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-open { display: none; }
+  .menu-toggle[aria-expanded="true"] .icon-close { display: block; }
+
+  @media (max-width: 900px) {
+    .menu-toggle { display: inline-flex; }
+    .nav-links {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 28px;
+      right: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 18px 32px var(--shadow-color);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      margin-left: 0;
+      padding: 13px 14px;
+      border-radius: 10px;
+    }
+    .nav-links a:hover { background: var(--bg); text-decoration: none; }
+  }
+
   .eyebrow {
     font-size: 12px;
     text-transform: uppercase;
@@ -636,7 +678,15 @@
     .hero-grid, .story-grid, .recognition-grid { grid-template-columns: 1fr; }
     .story-grid { gap: 32px; }
     .hero-image-wrap { order: -1; }
-    nav a { margin-left: 16px; font-size: 12px; }
+    .hero { padding: 56px 0 64px; }
+    section { padding: 60px 0; }
+    .logo { font-size: 24px; }
+    .cta-row a { padding: 12px 20px; }
+    .project-card { padding: 26px 24px; }
+  }
+
+  @media (max-width: 420px) {
+    .wrap { padding: 0 20px; }
   }
 </style>
 </head>
@@ -648,15 +698,21 @@
   <div class="wrap">
     <div class="logo">My Luu</div>
     <nav>
-      <a href="#story">My Story</a>
-      <a href="#projects">Projects</a>
-      <a href="#newsletter">Ideas &amp; Writing</a>
-      <a href="#how-i-work">How I Work</a>
-      <a href="#books">Bookshelf</a>
-      <a href="#contact">Work With Me</a>
+      <div class="nav-links" id="nav-links">
+        <a href="#story">My Story</a>
+        <a href="#projects">Projects</a>
+        <a href="#newsletter">Ideas &amp; Writing</a>
+        <a href="#how-i-work">How I Work</a>
+        <a href="#books">Bookshelf</a>
+        <a href="#contact">Work With Me</a>
+      </div>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light/dark mode">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
       </button>
     </nav>
   </div>
@@ -1031,6 +1087,27 @@
           box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
+    });
+  })();
+
+  // Mobile nav menu
+  (function () {
+    var menuToggle = document.getElementById('menu-toggle');
+    var navLinks = document.getElementById('nav-links');
+    if (!menuToggle || !navLinks) return;
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    menuToggle.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 900) closeMenu();
     });
   })();
 
