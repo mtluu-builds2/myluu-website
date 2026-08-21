@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Luu — Organizational Psychologist &amp; Builder</title>
+<title>My Luu: Organizational Psychologist &amp; Builder</title>
 <script>
   (function () {
     try {
@@ -17,13 +17,13 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="My Luu — Organizational Psychologist &amp; Builder">
+<meta property="og:title" content="My Luu: Organizational Psychologist &amp; Builder">
 <meta property="og:description" content="Organizational psychologist and 2x founder building human-first, AI-native organizations. Head of Culture at The AI Collective.">
 <meta property="og:image" content="assets/og-image.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="My Luu — Organizational Psychologist &amp; Builder">
+<meta name="twitter:title" content="My Luu: Organizational Psychologist &amp; Builder">
 <meta name="twitter:description" content="Organizational psychologist and 2x founder building human-first, AI-native organizations. Head of Culture at The AI Collective.">
 <meta name="twitter:image" content="assets/og-image.jpg">
 
@@ -306,6 +306,39 @@
     color: var(--ink);
     margin-bottom: 24px;
   }
+  .collapsible {
+    position: relative;
+    max-height: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 6px;
+    transition: max-height 0.4s ease;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-2) transparent;
+  }
+  .collapsible::-webkit-scrollbar { width: 6px; }
+  .collapsible::-webkit-scrollbar-thumb { background: var(--accent-2); border-radius: 999px; }
+  .collapsible::-webkit-scrollbar-track { background: transparent; }
+  .collapsible.expanded {
+    max-height: none;
+    overflow-y: visible;
+  }
+  .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+    background: none;
+    border: none;
+    color: var(--accent-2);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    padding: 0;
+  }
+  .read-more-btn:hover { text-decoration: underline; }
 
   /* Projects */
   .project-carousel { position: relative; }
@@ -425,6 +458,42 @@
   }
   .stat .label { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 140px; }
 
+  .recognition-list { margin-bottom: 26px; }
+  .recognition-list:last-of-type { margin-bottom: 0; }
+  .recognition-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--accent-2);
+    margin-bottom: 12px;
+  }
+  .recognition-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .recognition-list li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 9px;
+  }
+  .recognition-list li:last-child { margin-bottom: 0; }
+  .recognition-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gradient);
+  }
+  .recognition-note { font-size: 13px; color: var(--muted); margin-top: 14px; margin-bottom: 0; }
+
   /* Education, compact */
   #education p { font-size: 15px; }
 
@@ -450,25 +519,29 @@
     color: var(--ink);
     margin-bottom: 44px;
   }
-  .values-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px 40px;
-    counter-reset: val;
+  #how-i-work .collapsible { max-width: none; }
+  .work-subsections { counter-reset: work; }
+  .work-subsection {
+    border-left: 2px solid transparent;
+    border-image: var(--gradient) 1;
+    padding-left: 20px;
+    margin-bottom: 32px;
+    position: relative;
   }
-  .value-item { border-left: 2px solid transparent; border-image: var(--gradient) 1; padding-left: 18px; position: relative; }
-  .value-item::before {
-    counter-increment: val;
-    content: counter(val, decimal-leading-zero);
+  .work-subsection:last-child { margin-bottom: 4px; }
+  .work-subsection::before {
+    counter-increment: work;
+    content: counter(work, decimal-leading-zero);
     display: block;
     font-family: var(--serif);
     font-size: 13px;
     color: var(--accent-2);
     letter-spacing: 0.1em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-  .value-item h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
-  .value-item p { font-size: 15px; color: var(--muted); margin-bottom: 0; }
+  .work-subsection h3 { font-family: var(--serif); font-size: 19px; font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+  .work-subsection p { font-size: 16px; color: var(--body-copy); margin-bottom: 0; max-width: none; }
+  .work-subsection p + p { margin-top: 10px; }
 
   /* Bookshelf */
   .shelf-group { margin-bottom: 48px; }
@@ -563,7 +636,6 @@
     .hero-grid, .story-grid, .recognition-grid { grid-template-columns: 1fr; }
     .story-grid { gap: 32px; }
     .hero-image-wrap { order: -1; }
-    .values-grid { grid-template-columns: 1fr; }
     nav a { margin-left: 16px; font-size: 12px; }
   }
 </style>
@@ -595,9 +667,9 @@
     <div>
       <div class="eyebrow">Organizational Psychologist · 2x Founder</div>
       <h1>I build <em>human-first</em>, AI-native organizations.</h1>
-      <p class="sub">Hi there! I'm My. Nearly 20 years turning people problems into infrastructure that actually holds. Currently Head of Culture on the global leadership team at The AI Collective.</p>
+      <p class="sub">Hi there! I'm My. For almost 20 years, I've helped organizations, from startups to global corporations, build the people systems and culture that let them scale without losing the human side. I'm currently Head of Culture on the global leadership team at The AI Collective.</p>
       <div class="cta-row">
-        <a href="#contact" class="primary">Get in touch</a>
+        <a href="mailto:hello@myluu.com" class="primary">Get in touch</a>
         <a href="https://www.linkedin.com/in/mytluu/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
       </div>
     </div>
@@ -616,9 +688,13 @@
     </div>
     <div class="story-text">
       <div class="eyebrow">My Story</div>
-      <p class="lede">I've spent almost 20 years figuring out how people actually thrive inside organizations.</p>
-      <p>I started as a CPA, burned out on spreadsheets, and went back to school for organizational psychology because I cared more about the humans than the ledger. Since then I keep landing in the same pattern: find something new, teach myself fast, teach other people, build the infrastructure that didn't exist yet, then hand it off and go find the next thing.</p>
-      <p>I've done that inside a Big 4 firm, a cancer-care startup, my own company, and now inside the largest AI community in the world. Different industries, same throughline: making sure the humans in the system don't get left behind by how fast it's moving.</p>
+      <p class="lede">Where I Started Is Why I Build for People</p>
+      <div class="collapsible" id="story-collapsible">
+        <p>I was born and raised in Cypress, Texas, a small town on the northwest edge of Houston that most people outside the area have never heard of. My parents came to this country as refugees from Vietnam with nothing. They didn't speak the language, didn't know the systems, and had no manual for how to build a life here. They built a life anyway, so my two sisters and I could have one too. (I'm the middle kiddo.) Growing up, I watched what it actually takes to build something you love from scratch: humility, resourcefulness, and resilience. I grew up in a place where there were few people in the room who looked like me, which taught me early what it feels like to not quite belong, and how much it matters when someone makes space for you anyway.</p>
+        <p>Through that upbringing, I've spent my career obsessed with people and the systems that are supposed to serve them. As a first generation college student, becoming a CPA felt like the responsible, good girl choice, built on stability and security rather than what I actually wanted. A few years in, I realized I'd made that decision for everyone else's approval, not my own, which kicked off a lot of different versions of me. What I actually loved was people, and understanding why we do the things we do, particularly at work, so when a friend of a friend told me about organizational psychology, the science of people and work, I was hooked. (Adam Grant is basically my Beyonc&eacute;.) Over the past 16+ years, that curiosity turned into a career building human-first change through places like PwC and Coursera, reaching millions of people, and eventually co-founding two organizations of my own: a nonprofit called the <a href="https://baodn.wildapricot.org/" target="_blank" rel="noopener noreferrer">Bay Area Organization Development Network</a> that I helped launch during the pandemic, and later a company built to help young adults land their first job out of college. Every version of that work comes back to the same belief: people do better when they're seen, heard, supported, and given room to grow, because that's exactly what someone did for my family when we had nothing else to stand on.</p>
+        <p>These days, I'm a proud mom to my daughter, after a difficult 4-year fertility journey to have her. I'm also on a lifelong journey to become the best version of myself, personally and professionally, and right now, I'm in my My 6.0 era. If you're someone who has ever felt like the outsider trying to build something from scratch, in a career, a family, or a new chapter you didn't fully expect, I'd love to connect. If you're a leader trying to bring more human-first thinking into your own organization, this is the work humanity needs now more than ever. <strong>That's human-first: people showing up for people.</strong></p>
+      </div>
+      <button class="read-more-btn" data-target="story-collapsible" aria-expanded="false" aria-controls="story-collapsible">Read more &#8595;</button>
     </div>
   </div>
 </section>
@@ -641,7 +717,7 @@
       <a class="project-card" href="https://www.linkedin.com/company/lifespark-labs" target="_blank" rel="noopener noreferrer">
         <div class="org">LifeSpark Labs &middot; 2023&ndash;2026</div>
         <h3>An AI career coach disguised as a game</h3>
-        <p>Co-founded and led this from a 15-minute prototype I taught myself to code, to a platform that reached roughly 4,000 young adults closing the gap between school and their first job. Wound it down the right way in 2026: stockholders informed, partners taken care of, reputation intact.</p>
+        <p>Co-founded and led this from a 15-minute prototype I taught myself to code, to a platform that reached roughly 4,000 young adults closing the gap between school and their first job. Wound it down in 2026, learned more than any book could teach me.</p>
       </a>
       <a class="project-card" href="https://claude.ai/public/artifacts/e52558fb-3274-4c54-9a78-3771afe1ae46" target="_blank" rel="noopener noreferrer">
         <div class="org">Rolo &middot; Personal project</div>
@@ -650,23 +726,23 @@
       </a>
       <div class="project-card">
         <div class="org">Blue Note Therapeutics &middot; 2021&ndash;2023</div>
-        <h3>Building the people function from zero</h3>
-        <p>Head of HR at a venture-backed cancer-care startup. Built the whole employee experience from scratch, and got the company through a reduction in force and hard conversations without losing people's trust.</p>
+        <h3>Building the people function from 0 to 1</h3>
+        <p>Head of HR at a venture-backed cancer-care startup. Built the whole employee experience from scratch, including performance development, compensation, workforce planning, and learning, as an HR team of one.</p>
       </div>
       <a class="project-card" href="https://www.credly.com/organizations/pwc/badges" target="_blank" rel="noopener noreferrer">
-        <div class="org">PwC Network Badge Programme &middot; 2017&ndash;2021</div>
-        <h3>A hunch that became an 18-person team and $16.4M</h3>
-        <p>Pitched digital credentialing before anyone else at PwC believed in it. Built the team, built the program, issued 139,000+ badges across 48 countries, 40M+ views.</p>
+        <div class="org">PwC Badges &middot; 2017&ndash;2021</div>
+        <h3>0 to 1 Skills-Based Workforce</h3>
+        <p>Built PwC's skills-based credentialing program from 0 to 1, digitally upskilling the global workforce while managing a multi-million dollar P&amp;L and the team behind it. Issued 139,000+ badges across 48 countries, with 40M+ views.</p>
       </a>
       <a class="project-card" href="https://www.coursera.org/specializations/pwc-analytics/" target="_blank" rel="noopener noreferrer">
         <div class="org">PwC &times; Coursera &middot; 2016&ndash;2017</div>
-        <h3>PwC's first-ever corporate MOOC</h3>
-        <p>2.4M visitors, 370,000+ enrollments, 81+ hires, and a Forbes feature, back when "corporate specialization on Coursera" wasn't a sentence anyone said out loud yet.</p>
+        <h3>1st Massive Open Online Course (MOOC) Series on Coursera</h3>
+        <p>PwC's first revenue-generating partnership with Coursera: a global approach to sourcing and attracting talent, and digitally upskilling the world on data and analytics skills. 2.4M visitors, 370,000+ enrollments, 81+ hires, and a Forbes feature.</p>
       </a>
       <div class="project-card">
-        <div class="org">PwC &middot; 2009&ndash;2021, earlier years</div>
+        <div class="org">PwC &middot; 2009&ndash;2015, earlier years</div>
         <h3>Where I actually learned the craft</h3>
-        <p>Twelve years progressing from Assurance into Learning &amp; Development and global people strategy. Designed onboarding that improved junior staff retention by 20%, and eventually PwC's first global people value proposition framework.</p>
+        <p>Progressing from Assurance/Consulting into Learning &amp; Development and global people strategy. Designed onboarding that improved junior staff retention by 20%, and eventually PwC's first global people value proposition framework.</p>
       </div>
       </div>
       <div class="carousel-dots" id="project-dots"></div>
@@ -688,13 +764,29 @@
           <div class="num">500+</div>
           <div class="label">people coached 1:1 across my career</div>
         </div>
-        <div class="stat">
-          <div class="num">100%</div>
-          <div class="label">placement rate for people I've personally referred</div>
-        </div>
       </div>
-      <p>UBS &amp; Luminary Fellow (2024) &middot; Finalist, 100 Women to Know Award (2026) &middot; Female Founder in Focus, featured in an SF MOMA exhibition.</p>
-      <p>Recent talks: SF Tech Week &mdash; Who Will Decide the Future of Work? (2025); Gatherverse Tech for Humanity Summit (2025); SheLeadsAI podcast (2025); University of San Francisco (2026); Stanford Pitch Competition. Work featured in Forbes, Coursera, and PwC publications.</p>
+      <div class="recognition-list">
+        <div class="recognition-label">Recent recognitions</div>
+        <ul>
+          <li>UBS &amp; Luminary Fellow (2024)</li>
+          <li>100 Women to Know Award (2026): Finalist</li>
+          <li>SF MOMA Exhibition (2026): Female Founder in Focus feature</li>
+          <li>Golden Gate University (2017): Graduate Commencement Speaker</li>
+        </ul>
+      </div>
+      <div class="recognition-list">
+        <div class="recognition-label">Recent talks</div>
+        <ul>
+          <li>SF Tech Week (2026): The Human Side of the Future of Work</li>
+          <li>SF Tech Week (2025): Who Will Decide the Future of Work?</li>
+          <li>Gatherverse Men's Health Summit (2025): Current and Future State of Men's Health in the Modern Era of Emerging Technologies</li>
+          <li>Gatherverse Tech for Humanity Summit (2025): Ways of Building: Innovation That Serves Everyone</li>
+          <li>SheLeadsAI Podcast (2025)</li>
+          <li>University of San Francisco (2026)</li>
+          <li>Stanford Pitch Competition (2026): hosted and emceed The AI Collective's first-ever pitch competition, drawing nearly 250 attendees in person and virtually</li>
+        </ul>
+        <p class="recognition-note">Work featured in Forbes, Coursera, and PwC publications.</p>
+      </div>
     </div>
     <div class="frame">
       <img src="assets/recognition-panel.jpg" alt="My Luu speaking on a panel discussion in front of a live audience">
@@ -705,9 +797,9 @@
 <section id="education">
   <div class="wrap">
     <div class="eyebrow">Education</div>
-    <p>M.A., Industrial/Organizational Psychology &mdash; Golden Gate University<br>
-    B.B.A. &amp; Master in Professional Accounting &mdash; The University of Texas at Austin<br>
-    Certified Public Accountant (CPA), inactive &mdash; Texas and California</p>
+    <p>M.A., Industrial/Organizational Psychology: Golden Gate University<br>
+    B.B.A. &amp; Master in Professional Accounting: The University of Texas at Austin<br>
+    Certified Public Accountant (CPA), inactive: Texas and California</p>
   </div>
 </section>
 
@@ -725,26 +817,38 @@
 <section id="how-i-work">
   <div class="wrap">
     <div class="eyebrow">How I Work</div>
-    <h2>My personality, in practice</h2>
-    <p class="work-intro">I lead with directness, not politics. I'd rather tell you the hard thing clearly than let it fester. I'm allergic to jargon and to work that exists just to look like work. I believe rest is part of performance, not the opposite of it, and that the best decisions get made when people feel safe enough to disagree out loud.</p>
-    <div class="values-grid">
-      <div class="value-item">
-        <h3>Be better</h3>
-        <p>Leave things better than I found them. Sustainable performance, not burnout.</p>
-      </div>
-      <div class="value-item">
-        <h3>Be authentic</h3>
-        <p>Listen to what actually feels right, and take ownership of the call.</p>
-      </div>
-      <div class="value-item">
-        <h3>Be clear</h3>
-        <p>Say the thing directly, in a way the other person can actually receive.</p>
-      </div>
-      <div class="value-item">
-        <h3>Be a learner</h3>
-        <p>No one has all the answers. Progress over perfection.</p>
+    <h2>My Operating Manual</h2>
+    <p class="work-intro">I lead with directness and deep listening, asking hard questions and disagreeing productively rather than avoiding conflict. I'm a systems thinker and servant leader who treats rest as part of performance, and who measures success by whether the people and systems I build still work without me.</p>
+    <div class="collapsible" id="howiwork-collapsible">
+      <div class="work-subsections">
+        <div class="work-subsection">
+          <h3>What I Believe</h3>
+          <p>I try to leave things better than I found them. Rest and recovery aren't a break from high performance, they're part of it. Nobody has all the answers, including me. Progress over perfection. The most meaningful problems are too complex to solve alone, I build in community. As an introvert, I like to recharge alone with a good book, a yoga session, a HIIT class, or a Kdrama. Life is hard. Choose your hard. If not you then who. If not now then when.</p>
+        </div>
+        <div class="work-subsection">
+          <h3>How I Think</h3>
+          <p>I need time to think. I process before I respond, so if I go quiet for a bit or my eye contact drifts up to the left before answering, I'm thinking, not stalling. I'm a systems thinker, I need to understand the big picture before I can zoom into execution or be productive. If you need something urgently, tell me, otherwise I'll take my time, because that's how I make the best decisions. I'm skeptical of psychometric assessments as the final word on who someone is, boxes rarely fit real people. But I'm a genuine fan of tools that help create a shared language for meaning. For what it's worth, over the years I've landed on: INTJ (Myers-Briggs), The Helper (Enneagram Type 2), and my top 5 StrengthsFinder themes, in order: Relator, Achiever, Harmony, Learner, and Individualization. I know my profile has evolved on some of these since I last took the assessment.</p>
+        </div>
+        <div class="work-subsection">
+          <h3>How I Communicate</h3>
+          <p>I'm a listener first. I ask a lot of open-ended questions, often the hard ones no one else thinks to ask. Leave your ego at the door, I'll leave mine too. If we disagree, let's disagree productively: I'll seek to understand your point of view and create room for healthy conflict, that's how people end up feeling seen and heard, not something to avoid to keep the peace. I'd rather tell you the hard thing clearly, in a way you can actually receive it, than let it fester. I seek feedback that is specific, ideally with examples or metaphors, to help me understand.</p>
+        </div>
+        <div class="work-subsection">
+          <h3>Ways I Work</h3>
+          <p>I'm a visual learner, a great infographic or picture says a thousand words to me. If you want me to get to yes faster, show me, don't just tell me. Give me the destination and the why, and I'll figure out the how, I do my best work with a clear outcome and room to run, not a step-by-step script. Tell me the real deadline, not a padded one, I'd rather know the true constraint and plan around it than find out later there was slack. I'd rather have fewer, more focused meetings than constant syncs, send me context ahead of time so we can use the meeting to actually decide something, or make it clear upfront if the goal is something else, a brainstorm, a vent, a workshop session. And loop me in early on big decisions, not after the direction is already set, I'd rather help shape it upfront than react to it after the fact.</p>
+        </div>
+        <div class="work-subsection">
+          <h3>How I Lead</h3>
+          <p>My superpower is creating the conditions for teammates to feel comfortable being vulnerable and courageous with me, in service of building trust and strong team cohesion. I don't abuse that power, the best leaders share power with others and lead through others, not over them. I believe you can lead without a formal title, and my job as a leader is to create more leaders and work myself out of a job. I typically lead as a servant leader, bringing value to others, and I'll tailor my approach based on what works best for the person and the situation, not a fixed style. I'm also a coach: if you trust me and give me permission, I'll push you, because my goal is to help you become the best version of yourself. With partnerships, I look for a shared value exchange and lead with my values, working with like-minded groups and individuals who are culture adds, not culture fits.</p>
+        </div>
+        <div class="work-subsection">
+          <h3>How I Feel Appreciated</h3>
+          <p>My languages of appreciation at work are quality time and words of affirmation. If you want me to feel valued, give me your focused attention, and tell me directly and specifically the impact you see in my work.</p>
+          <p>$ and gifts are always appreciated though ;)</p>
+        </div>
       </div>
     </div>
+    <button class="read-more-btn" data-target="howiwork-collapsible" aria-expanded="false" aria-controls="howiwork-collapsible">Read more &#8595;</button>
   </div>
 </section>
 
@@ -760,13 +864,17 @@
         <button class="carousel-btn prev" id="current-prev" aria-label="Previous book">&#8249;</button>
         <button class="carousel-btn next" id="current-next" aria-label="Next book">&#8250;</button>
         <div class="book-track" id="current-track">
-        <a class="book-card" href="https://bookshop.org/p/books/incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great-eric-ries/59b9dafd417d9e02" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798893311860.jpg?v=65b6a41ab6f9840e537c32c5f5bb1cac&width=600" alt="Incorruptible book cover"></div>
-          <div class="book-title">Incorruptible</div><div class="book-author">Eric Ries</div>
-        </a>
         <a class="book-card" href="https://bookshop.org/p/books/likeable-badass-how-women-get-the-success-they-deserve-alison-fragale/c3d6111017a7b410" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780593468982.jpg?v=396605b374666a0b713863d734e47f7f&width=600" alt="Likeable Badass book cover"></div>
           <div class="book-title">Likeable Badass</div><div class="book-author">Alison Fragale</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/amplify-my-fight-for-asian-america-dion-lim/844c60b8258254ec" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798890130006.jpg?v=a70776e95beb7e56815bb10767891973&width=600" alt="Amplify! book cover"></div>
+          <div class="book-title">Amplify!: My Fight for Asian America</div><div class="book-author">Dion Lim</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/incorruptible-why-good-companies-go-bad-and-how-great-companies-stay-great-eric-ries/59b9dafd417d9e02" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798893311860.jpg?v=65b6a41ab6f9840e537c32c5f5bb1cac&width=600" alt="Incorruptible book cover"></div>
+          <div class="book-title">Incorruptible</div><div class="book-author">Eric Ries</div>
         </a>
         </div>
         <div class="carousel-dots" id="current-dots"></div>
@@ -779,61 +887,57 @@
         <button class="carousel-btn prev" id="nonfiction-prev" aria-label="Previous book">&#8249;</button>
         <button class="carousel-btn next" id="nonfiction-next" aria-label="Next book">&#8250;</button>
         <div class="book-track" id="nonfiction-track">
-        <a class="book-card" href="https://bookshop.org/p/books/becoming-michelle-obama/adb5851164644606" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781524763145.jpg?v=e2dd855e464c9bab94fa218d285b092e&width=600" alt="Becoming book cover"></div>
-          <div class="book-title">Becoming</div><div class="book-author">Michelle Obama</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/build-the-damn-thing-how-to-start-a-successful-business-if-you-re-not-a-rich-white-guy-kathryn-finney/da4c5310177f7e7d" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798217182442.jpg?v=06f19019adff646ecb965c1e5973d2ee&width=600" alt="Build the Damn Thing book cover"></div>
-          <div class="book-title">Build the Damn Thing</div><div class="book-author">Kathryn Finney</div>
-        </a>
         <a class="book-card" href="https://bookshop.org/p/books/daring-greatly-how-the-courage-to-be-vulnerable-transforms-the-way-we-live-love-parent-and-lead-bren-brown/d53269667b2081fd" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781592408412.jpg?v=a376dca43c9e531c37aa611ef267a650&width=600" alt="Daring Greatly book cover"></div>
           <div class="book-title">Daring Greatly</div><div class="book-author">Bren&eacute; Brown</div>
         </a>
-        <a class="book-card" href="https://bookshop.org/p/books/dear-girls-intimate-tales-untold-secrets-advice-for-living-your-best-life-ali-wong/6c182b64e707671d" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525508854.jpg?v=enc-v1&width=600" alt="Dear Girls book cover"></div>
-          <div class="book-title">Dear Girls</div><div class="book-author">Ali Wong</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/grit-the-power-of-passion-and-perseverance-angela-duckworth/be645fb13a2c0bfc" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781501111112.jpg?v=d2a7f3821eb70bb43f550c0a7b795b98&width=600" alt="Grit book cover"></div>
-          <div class="book-title">Grit</div><div class="book-author">Angela Duckworth</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/how-to-be-an-antiracist-ibram-x-kendi/521ef65d5c2268ca" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525509301.jpg?v=ca397184f565fa68b6c0629e65394659&width=600" alt="How to Be an Antiracist book cover"></div>
-          <div class="book-title">How to Be an Antiracist</div><div class="book-author">Ibram X. Kendi</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/the-magnolia-story-chip-gaines/799b80f140e237fb" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780718079185.jpg?v=enc-v1&width=600" alt="The Magnolia Story book cover"></div>
-          <div class="book-title">The Magnolia Story</div><div class="book-author">Chip &amp; Joanna Gaines</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/the-obstacle-is-the-way-the-timeless-art-of-turning-trials-into-triumph-ryan-holiday/a0d876bc2426fb75" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780593719916.jpg?v=221f933a8e9b12625cc124e9eaa32fd5&width=600" alt="The Obstacle Is the Way book cover"></div>
-          <div class="book-title">The Obstacle Is the Way</div><div class="book-author">Ryan Holiday</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/outliers-the-story-of-success-malcolm-gladwell/1cd3644f256d7d2e" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780316017930.jpg?v=c54cb023406ea1e8dce56beba3c5d201&width=600" alt="Outliers book cover"></div>
-          <div class="book-title">Outliers</div><div class="book-author">Malcolm Gladwell</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/over-the-top-a-raw-journey-to-self-love-jonathan-van-ness/ec9a10744ce4af4d" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780062906380.jpg?v=d824ab5e793fa1092684946f75359486&width=600" alt="Over the Top book cover"></div>
-          <div class="book-title">Over the Top</div><div class="book-author">Jonathan Van Ness</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/radical-friendship-seven-ways-to-love-yourself-and-find-your-people-in-an-unjust-world-kate-johnson/1fd460fe55e72041" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781611808117.jpg?v=enc-v1&width=600" alt="Radical Friendship book cover"></div>
-          <div class="book-title">Radical Friendship</div><div class="book-author">Kate Johnson</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/tuesdays-with-morrie-an-old-man-a-young-man-and-life-s-greatest-lesson-mitch-albom/1239beb0e6df1116" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780385484510.jpg?v=enc-v1&width=600" alt="Tuesdays with Morrie book cover"></div>
-          <div class="book-title">Tuesdays with Morrie</div><div class="book-author">Mitch Albom</div>
+        <a class="book-card" href="https://bookshop.org/p/books/white-fragility-why-it-s-so-hard-for-white-people-to-talk-about-racism-dr-robin-diangelo/9bb312f941d2a646" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780807047415.jpg?v=e4a8271e853a74ee3cc6609919014dbe&width=600" alt="White Fragility book cover"></div>
+          <div class="book-title">White Fragility</div><div class="book-author">Robin DiAngelo</div>
         </a>
         <a class="book-card" href="https://bookshop.org/p/books/untamed-reese-s-book-club-glennon-doyle/55eaa08b7cf1dff0" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781984801258.jpg?v=fc9810c0975506b90e9d4f1dac5a8f9f&width=600" alt="Untamed book cover"></div>
           <div class="book-title">Untamed</div><div class="book-author">Glennon Doyle</div>
         </a>
-        <a class="book-card" href="https://bookshop.org/p/books/white-fragility-why-it-s-so-hard-for-white-people-to-talk-about-racism-dr-robin-diangelo/9bb312f941d2a646" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780807047415.jpg?v=e4a8271e853a74ee3cc6609919014dbe&width=600" alt="White Fragility book cover"></div>
-          <div class="book-title">White Fragility</div><div class="book-author">Robin DiAngelo</div>
+        <a class="book-card" href="https://bookshop.org/p/books/grit-the-power-of-passion-and-perseverance-angela-duckworth/be645fb13a2c0bfc" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781501111112.jpg?v=d2a7f3821eb70bb43f550c0a7b795b98&width=600" alt="Grit book cover"></div>
+          <div class="book-title">Grit</div><div class="book-author">Angela Duckworth</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/build-the-damn-thing-how-to-start-a-successful-business-if-you-re-not-a-rich-white-guy-kathryn-finney/da4c5310177f7e7d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9798217182442.jpg?v=06f19019adff646ecb965c1e5973d2ee&width=600" alt="Build the Damn Thing book cover"></div>
+          <div class="book-title">Build the Damn Thing</div><div class="book-author">Kathryn Finney</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-magnolia-story-chip-gaines/799b80f140e237fb" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780718079185.jpg?v=enc-v1&width=600" alt="The Magnolia Story book cover"></div>
+          <div class="book-title">The Magnolia Story</div><div class="book-author">Chip &amp; Joanna Gaines</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/outliers-the-story-of-success-malcolm-gladwell/1cd3644f256d7d2e" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780316017930.jpg?v=c54cb023406ea1e8dce56beba3c5d201&width=600" alt="Outliers book cover"></div>
+          <div class="book-title">Outliers</div><div class="book-author">Malcolm Gladwell</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-obstacle-is-the-way-the-timeless-art-of-turning-trials-into-triumph-ryan-holiday/a0d876bc2426fb75" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780593719916.jpg?v=221f933a8e9b12625cc124e9eaa32fd5&width=600" alt="The Obstacle Is the Way book cover"></div>
+          <div class="book-title">The Obstacle Is the Way</div><div class="book-author">Ryan Holiday</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/radical-friendship-seven-ways-to-love-yourself-and-find-your-people-in-an-unjust-world-kate-johnson/1fd460fe55e72041" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781611808117.jpg?v=enc-v1&width=600" alt="Radical Friendship book cover"></div>
+          <div class="book-title">Radical Friendship</div><div class="book-author">Kate Johnson</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/how-to-be-an-antiracist-ibram-x-kendi/521ef65d5c2268ca" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525509301.jpg?v=ca397184f565fa68b6c0629e65394659&width=600" alt="How to Be an Antiracist book cover"></div>
+          <div class="book-title">How to Be an Antiracist</div><div class="book-author">Ibram X. Kendi</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/becoming-michelle-obama/adb5851164644606" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781524763145.jpg?v=e2dd855e464c9bab94fa218d285b092e&width=600" alt="Becoming book cover"></div>
+          <div class="book-title">Becoming</div><div class="book-author">Michelle Obama</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/over-the-top-a-raw-journey-to-self-love-jonathan-van-ness/ec9a10744ce4af4d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780062906380.jpg?v=d824ab5e793fa1092684946f75359486&width=600" alt="Over the Top book cover"></div>
+          <div class="book-title">Over the Top</div><div class="book-author">Jonathan Van Ness</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/dear-girls-intimate-tales-untold-secrets-advice-for-living-your-best-life-ali-wong/6c182b64e707671d" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525508854.jpg?v=enc-v1&width=600" alt="Dear Girls book cover"></div>
+          <div class="book-title">Dear Girls</div><div class="book-author">Ali Wong</div>
         </a>
         </div>
         <div class="carousel-dots" id="nonfiction-dots"></div>
@@ -846,25 +950,37 @@
         <button class="carousel-btn prev" id="fiction-prev" aria-label="Previous book">&#8249;</button>
         <button class="carousel-btn next" id="fiction-next" aria-label="Next book">&#8250;</button>
         <div class="book-track" id="fiction-track">
-        <a class="book-card" href="https://bookshop.org/p/books/the-bride-test-helen-hoang/ed3cbf8b35752b5c" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780451490827.jpg?v=f39dbc1d9a812efc9be8091afa3be54c&width=600" alt="The Bride Test book cover"></div>
-          <div class="book-title">The Bride Test</div><div class="book-author">Helen Hoang</div>
-        </a>
-        <a class="book-card" href="https://bookshop.org/p/books/everything-i-never-told-you-celeste-ng/c20294ef63ab6145" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780143127550.jpg?v=79921b524467c351d39cd6a366d71a49&width=600" alt="Everything I Never Told You book cover"></div>
-          <div class="book-title">Everything I Never Told You</div><div class="book-author">Celeste Ng</div>
-        </a>
         <a class="book-card" href="https://bookshop.org/p/books/the-five-people-you-meet-in-heaven-mitch-albom/5bb260df84a3a268" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781401308582.jpg?v=5a62f0216460159527b30a1a6356de9c&width=600" alt="The Five People You Meet in Heaven book cover"></div>
           <div class="book-title">The Five People You Meet in Heaven</div><div class="book-author">Mitch Albom</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/tuesdays-with-morrie-an-old-man-a-young-man-and-life-s-greatest-lesson-mitch-albom/1239beb0e6df1116" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780385484510.jpg?v=enc-v1&width=600" alt="Tuesdays with Morrie book cover"></div>
+          <div class="book-title">Tuesdays with Morrie</div><div class="book-author">Mitch Albom</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-vanishing-half-a-gma-book-club-pick-a-novel-brit-bennett/216921d46a917406" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525536963.jpg?v=5079fc0e1449270543bf37e871acea12&width=600" alt="The Vanishing Half book cover"></div>
+          <div class="book-title">The Vanishing Half</div><div class="book-author">Brit Bennett</div>
         </a>
         <a class="book-card" href="https://bookshop.org/p/books/people-we-meet-on-vacation-emily-henry/0c254838c8093ee3" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9781984806758.jpg?v=c1c8b9397b13dbda11c8732361b4de84&width=600" alt="People We Meet on Vacation book cover"></div>
           <div class="book-title">People We Meet on Vacation</div><div class="book-author">Emily Henry</div>
         </a>
-        <a class="book-card" href="https://bookshop.org/p/books/the-vanishing-half-a-gma-book-club-pick-a-novel-brit-bennett/216921d46a917406" target="_blank" rel="noopener noreferrer">
-          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780525536963.jpg?v=5079fc0e1449270543bf37e871acea12&width=600" alt="The Vanishing Half book cover"></div>
-          <div class="book-title">The Vanishing Half</div><div class="book-author">Brit Bennett</div>
+        <a class="book-card" href="https://bookshop.org/p/books/the-bride-test-helen-hoang/ed3cbf8b35752b5c" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780451490827.jpg?v=f39dbc1d9a812efc9be8091afa3be54c&width=600" alt="The Bride Test book cover"></div>
+          <div class="book-title">The Bride Test</div><div class="book-author">Helen Hoang</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-heart-principle-helen-hoang/9c2b6392df059812" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780451490841.jpg?v=enc-v1&width=600" alt="The Heart Principle book cover"></div>
+          <div class="book-title">The Heart Principle</div><div class="book-author">Helen Hoang</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/the-kiss-quotient-helen-hoang/6b39f8ea8cafca34" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780451490803.jpg?v=07d026667d2b8f2231d7671a14c5ff50&width=600" alt="The Kiss Quotient book cover"></div>
+          <div class="book-title">The Kiss Quotient</div><div class="book-author">Helen Hoang</div>
+        </a>
+        <a class="book-card" href="https://bookshop.org/p/books/everything-i-never-told-you-celeste-ng/c20294ef63ab6145" target="_blank" rel="noopener noreferrer">
+          <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780143127550.jpg?v=79921b524467c351d39cd6a366d71a49&width=600" alt="Everything I Never Told You book cover"></div>
+          <div class="book-title">Everything I Never Told You</div><div class="book-author">Celeste Ng</div>
         </a>
         <a class="book-card" href="https://bookshop.org/p/books/where-the-crawdads-sing-reese-s-book-club-delia-owens/6d44dfb09fc8952c" target="_blank" rel="noopener noreferrer">
           <div class="cover-frame"><img src="https://images-us.bookshop.org/ingram/9780735219106.jpg?v=daf4ebdf15f4304c125e58f72aaad7be&width=600" alt="Where the Crawdads Sing book cover"></div>
@@ -886,7 +1002,10 @@
     <div class="eyebrow">Work With Me</div>
     <h2>Let's talk.</h2>
     <p>Open to conversations about fractional People/culture advisory, speaking, and the newsletter.</p>
-    <p><a href="https://www.linkedin.com/in/mytluu/" target="_blank" rel="noopener">Message me on LinkedIn</a></p>
+    <div class="cta-row">
+      <a href="mailto:hello@myluu.com" class="primary">Say hello</a>
+      <a href="https://www.linkedin.com/in/mytluu/" target="_blank" rel="noopener noreferrer me">LinkedIn</a>
+    </div>
   </div>
 </section>
 
@@ -897,6 +1016,24 @@
 </footer>
 
 <script>
+  // Generic read more / read less (My Story, How I Work, etc.)
+  (function () {
+    var buttons = document.querySelectorAll('.read-more-btn');
+    buttons.forEach(function (btn) {
+      var box = document.getElementById(btn.getAttribute('data-target'));
+      if (!box) return;
+      btn.addEventListener('click', function () {
+        var expanded = box.classList.toggle('expanded');
+        btn.innerHTML = expanded ? 'Read less &#8593;' : 'Read more &#8595;';
+        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        if (!expanded) {
+          box.scrollTop = 0;
+          box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+  })();
+
   // Theme toggle
   (function () {
     var root = document.documentElement;
